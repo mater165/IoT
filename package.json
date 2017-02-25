@@ -1,0 +1,25 @@
+{
+  "name": "Project",
+  "version": "1.0.0",
+  "description": "Mina egna projekt",
+  "author": "Mattias Nielsen",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/username/repository.git"
+  },
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "npm run test && webpack --env=prod",
+    "pretest": "npm run sass-lint && npm run eslint && npm run jshint",
+    "test": "karma start --single-run",
+    "dev": "concurrently --kill-others \"node standalone/dev-server.js\" \"karma start\"",
+    "sass-lint": "sass-lint -v --config node_modules/pm-styleguide/dist/config/.sass-lint.yml",
+    "eslint": "eslint . --ignore-path .jshintignore --config node_modules/pm-styleguide/dist/config/.eslintrc.js",
+    "jshint": "jshint . --config node_modules/pm-styleguide/dist/config/.jshintrc",
+    "serveoutput": "node serveoutput"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "dt-client-nodejs": "git+https://github.com/disruptive-technologies/dt-client-nodejs.git"
+  }
+}
