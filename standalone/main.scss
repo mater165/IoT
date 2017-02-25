@@ -25,7 +25,7 @@
   }
 }
 
-.ps_body,
-body {
-  background-color: $mn_color-white;
+.mn_modules {
+  @include mn_base-container;
+  @include mn_base-padding;
 }
