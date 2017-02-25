@@ -1,0 +1,14 @@
+@charset 'utf-8';
+
+@import 'normalize.css/normalize';
+
+// Sökväg till fonter
+//$font-path: 'fonts';
+
+// Grundfunktionalitet
+//
+// Grundfunktionalitet i styleguiden, t.ex. variabler, f‰rger och typsnitt
+@import 'variables/index';
+@import 'mixins/index';
+
+@import 'divider';

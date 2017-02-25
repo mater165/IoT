@@ -1,0 +1,10 @@
+// Typsnitt
+//
+// $mn_font-default - Standardtypsnitt
+// $mn_font-header - Font för standardrubriker
+//
+// markup:
+// <div style='font-family: {$modifiers};'>{$modifiers}</div>
+$mn_font-fallback: 'Arial', 'Helvetica', sans-serif;
+$mn_font-default: 'Arial', 'Helvetica', sans-serif;
+$mn_font-header: 'Arial', 'Helvetica', sans-serif;

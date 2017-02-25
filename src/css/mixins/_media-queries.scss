@@ -1,0 +1,57 @@
+// mediaqueries
+//
+// Standardiserade mediaqueries för att styla innehåll vid olika brytpunkter.
+//
+// Expandera css för att se vilka mixins som finns.
+//
+// Det finns både gte (greater than equal) och utan gte (dvs endast fönsterstorlek från brytpunkt till nästa brytpunkt)
+//
+// Användning: @include mn_mq-gte-xsmall
+
+@mixin mn_mq-xxsmall {
+  @media screen and (max-width: $min-extra-small - 0.1em) {
+    @content;
+  }
+}
+
+@mixin mn_mq-gte-xsmall {
+  @media screen and (min-width: $min-extra-small) {
+    @content;
+  }
+}
+
+@mixin mn_mq-xsmall {
+  @media screen and (min-width: $min-extra-small) and (max-width: $min-small - 0.1em) {
+    @content;
+  }
+}
+
+@mixin mn_mq-gte-small {
+  @media screen and (min-width: $min-small) {
+    @content;
+  }
+}
+
+@mixin mn_mq-small {
+  @media screen and (min-width: $min-small) and (max-width: $min-medium - 0.1em) {
+    @content;
+  }
+}
+
+@mixin mn_mq-gte-medium {
+  @media screen and (min-width: $min-medium) {
+    @content;
+  }
+}
+
+@mixin mn_mq-medium {
+  @media screen and (min-width: $min-medium) and (max-width: $min-large - 0.1em) {
+    @content;
+  }
+}
+
+@mixin mn_mq-gte-large {
+  @media screen and (min-width: $min-large) {
+    @content;
+  }
+}
