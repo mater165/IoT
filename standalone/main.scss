@@ -1,9 +1,4 @@
-@import './src/scss/components/index';
-@import './src/scss/mixins/index';
-
-.ps_cta-button {
-  @include mn_button;
-}
+@import './../src/css/main';
 
 .mn_body {
   z-index: 1;

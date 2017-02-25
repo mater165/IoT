@@ -17,14 +17,14 @@ compiler.plugin('compilation', (compilation) => {
 
 const port = process.env.PORT || 8081;
 const mockApiPort = 8083;
-let proxyServer = require("http-proxy").createProxyServer();
+//let proxyServer = require("http-proxy").createProxyServer();
 
 express()
     .use(devMiddleware)
     .use(hotMiddleware)
     .use('/api/*', (req, res) => {
       req.url = req.baseUrl;
-      proxyServer.web(req, res, {target: {port: mockApiPort, host: "localhost"}})
+      //proxyServer.web(req, res, {target: {port: mockApiPort, host: "localhost"}})
     })
     .listen(port);
 

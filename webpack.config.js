@@ -9,7 +9,7 @@ const buildConfig = function (env) {
   const folder = isProd ? './output/' : '/';
   return {
     entry: {
-      app: ['./testing/main']
+      app: ['./standalone/main']
     },
     output: {
       filename: '[name].js',
@@ -45,7 +45,7 @@ const buildConfig = function (env) {
       }),
       new HtmlWebpackPlugin({
         chunks: ['app'],
-        template: './src/html/index.html'
+        template: './standalone/index.html'
       })
     ],
     stats: {
