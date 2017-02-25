@@ -1,0 +1,11 @@
+{
+  "expr": true,
+  "esversion": 6,
+  "strict": "implied",
+  "jasmine": true,
+  "node": true,
+  "browser": true,
+  "globals": {
+    "jQuery": false
+  }
+}
