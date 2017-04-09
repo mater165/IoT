@@ -1,1 +1,57 @@
 @import './../src/css/main';
+
+.mn_thing-table {
+    @include mn_table;
+}
+
+.mn_room {
+    height: 15em;
+    text-align: center;
+
+    &__room-number {
+        font-size: 2em;
+        margin-top: 0;
+    }
+
+    &__clean-my-room {
+        text-align: center;
+        vertical-align: top;
+        font-size: 1.8em;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('cleaning-icon.svg') no-repeat;
+            height: 28px;
+            padding-left: 30px;
+        }
+    }
+
+    &__door-open {
+        text-align: center;
+        vertical-align: top;
+        font-size: 1.8em;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('door-icon-open.svg') no-repeat;
+            height: 28px;
+            padding-left: 30px;
+        }
+    }
+
+    &__door-closed {
+        text-align: center;
+        vertical-align: top;
+        font-size: 1.8em;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('door-icon-closed.svg') no-repeat;
+            height: 28px;
+            padding-left: 30px;
+        }
+    }
+}

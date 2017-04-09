@@ -12,9 +12,41 @@
 }
 
 .mn_module {
-  padding: 1em;
+  display: inline-block;
+  width: calc(50% - 1.7em);
+  vertical-align: top;
+  margin-top: 1em;
+  padding: 1em 0.5em;
   background-color: $mn_color-module;
   border: 1px solid $mn_color-gray;
+
+  &:nth-child(2) {
+    margin-left: 1em;
+  }
+
+  &__col {
+    vertical-align: top;
+  }
+
+  &__left-col {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+
+    &--big {
+      width: 80%;
+    }
+  }
+
+  &__right-col {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+
+    &--small {
+      width: 20%;
+    }
+  }
 }
 
 @include spinnerKeyframes('spinner', $mn_color-black, 1em);

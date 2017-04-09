@@ -116,3 +116,9 @@
         background-color: $mn_color-cancel-pressed;
     }
 }
+
+@mixin mn_table {
+    width: 100%;
+    margin-top: 1em;
+    border: 1px solid $mn_color-black;
+}

@@ -1,3 +1,5 @@
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'];
+
 const qs = document && document.querySelector.bind(document);
 
 const qsAll = document && document.querySelectorAll.bind(document);
@@ -22,4 +24,13 @@ function toggleClass($el, classString) {
   }
 }
 
-export {qs, qsAll, unique, toggleClass};
+function timeZero(time) {
+  return time < 10 ? '0' + time : time;
+}
+
+function parseDate(date) {
+  const datum = new Date(date);
+  return datum.getDate() + ' ' + MONTHS[datum.getMonth()] + ' ' + datum.getFullYear() + ' ' + timeZero(datum.getHours()) + ':' + timeZero(datum.getMinutes()) + ':' + timeZero(datum.getSeconds());
+}
+
+export {qs, qsAll, unique, toggleClass, parseDate};

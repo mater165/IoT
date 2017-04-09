@@ -31,6 +31,15 @@ const buildConfig = function (env) {
           test: /\.html$/,
           include: path.resolve(__dirname, './src/html/index.html'),
           use: 'html-loader'
+        },{
+          test: /\.(gif|jpe?g|png|svg)(\?.*)?$/,
+          use: [
+            'file-loader',
+            {
+              loader: 'image-webpack-loader',
+              options: {}
+            }
+          ]
         }
       ]
     },

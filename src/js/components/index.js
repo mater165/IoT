@@ -1,4 +1,5 @@
 import print from './print';
-import thingHandler from './thing-handler';
+import room from './room';
+import pool from './pool';
 
-export {print, thingHandler};
+export {print, room, pool};
