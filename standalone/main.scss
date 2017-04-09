@@ -96,4 +96,18 @@
             vertical-align: bottom;
         }
     }
+
+    &__towel {
+        text-align: center;
+        font-size: 1.8em;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('towel-icon.svg') no-repeat;
+            height: 28px;
+            padding-left: 30px;
+            vertical-align: bottom;
+        }
+    }
 }

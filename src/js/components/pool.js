@@ -25,6 +25,14 @@ function isThingInfoRequest(thingId) {
     });
 }
 
+function addIconAndText($iconTextArea, className, text) {
+    if (className && text) {
+        $iconTextArea.innerHTML = `<div class="${className}">${text}</div>`;
+    } else {
+        $iconTextArea.innerHTML = '';
+    }
+}
+
 function updateTowelInfo($poolArea, thingId, hasTowels) {
     let $towelArea = $poolArea.querySelector('.mn_js-towels');
     let $towelPile = $towelArea.querySelector('div[data-thing-id="' + thingId + '"]');
@@ -34,7 +42,8 @@ function updateTowelInfo($poolArea, thingId, hasTowels) {
         $towelArea.appendChild($towelPile);
     } 
     let text = hasTowels ? ' har handdukar' : ' saknar handdukar';
-    $towelPile.innerHTML = `${thingId + text}`;
+    //$towelPile.innerHTML = `${thingId + text}`;
+    addIconAndText($towelPile, 'mn_room__towel', thingId + text);
 }
 
 function watchTowels($poolArea) {

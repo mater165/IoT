@@ -72,8 +72,11 @@ function watchCleaning($roomArea) {
             const lastOpened = localStorage.getItem('opened');
             isThingInfoRequest('206877446').then((result) => {
                 const windowIsClosed = result.object_present;
-                //$roomArea.querySelector('.mn_js-window').innerText = 'Fönstret är ' + (windowIsClosed ? 'stängt' : 'öppet');
-                addIconAndText($roomArea.querySelector('.mn_js-window'), 'mn_room__clean-my-room', 'Fönstret är ' + (windowIsClosed ? 'stängt' : 'öppet'));
+                if (windowIsClosed) {
+                    addIconAndText($roomArea.querySelector('.mn_js-window'), 'mn_room__window-closed', 'Fönstret är stängt');
+                } else {
+                    addIconAndText($roomArea.querySelector('.mn_js-window'), 'mn_room__window-open', 'Fönstret är öppet');
+                }
                 if (lastOpened) {
                     if (timeDifference(lastOpened) > 5 && windowIsClosed) {
                         localStorage.removeItem('opened');
