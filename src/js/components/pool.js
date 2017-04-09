@@ -2,13 +2,13 @@ import {utilities} from './..';
 
 const API_KEY  = 'd45a7c14c88f48f5937a8fc3254378ad';
 
-function isThingClosedRequest(thingId) {
+function isThingInfoRequest(thingId) {
     var xmlhttp = new XMLHttpRequest();
     return new Promise((resolve) => {
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
             if (xmlhttp.status == 200) {
-                resolve(JSON.parse(xmlhttp.response).state.properties.object_present);
+                resolve(JSON.parse(xmlhttp.response).state.properties);
             }
             else if (xmlhttp.status == 400) {
                 alert('There was an error 400');
@@ -70,10 +70,7 @@ class Pool {
   init() {
     if (this.$pool) {
         ['206848899', '206851841', '206878213'].forEach((thingId) => {
-            isThingClosedRequest(thingId).then((result) => {
-                updateTowelInfo(this.$pool, thingId, result);
-            }); 
-
+            isThingInfoRequest(thingId).then(result => updateTowelInfo(this.$pool, thingId, result.object_present)); 
         });
         watchTowels(this.$pool);
     }

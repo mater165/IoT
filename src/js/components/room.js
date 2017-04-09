@@ -2,20 +2,20 @@ import {utilities} from './..';
 
 const API_KEY  = 'd45a7c14c88f48f5937a8fc3254378ad';
 
-function isThingClosedRequest(thingId) {
+function isThingInfoRequest(thingId) {
     var xmlhttp = new XMLHttpRequest();
     return new Promise((resolve) => {
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
-            if (xmlhttp.status == 200) {
-                resolve(JSON.parse(xmlhttp.response).state.properties.object_present);
-            }
-            else if (xmlhttp.status == 400) {
-                alert('There was an error 400');
-            }
-            else {
-                alert('something else other than 200 was returned');
-            }
+                if (xmlhttp.status == 200) {
+                    resolve(JSON.parse(xmlhttp.response).state.properties);
+                }
+                else if (xmlhttp.status == 400) {
+                    alert('There was an error 400');
+                }
+                else {
+                    alert('something else other than 200 was returned');
+                }
             }
         };
         xmlhttp.open("GET", `https://api.disruptive-technologies.com/v1/things/${thingId}`, true);
@@ -80,8 +80,8 @@ function watchCleaning($roomArea) {
             //$roomArea.querySelector('.mn_js-door').innerText = 'Dörren är stängd';
             addIconAndText($roomArea.querySelector('.mn_js-door'), 'mn_room__door-closed', 'Dörren är stängd');
             const lastOpened = localStorage.getItem('opened');
-            isThingClosedRequest('206877446').then((result) => {
-                const windowIsClosed = result;
+            isThingInfoRequest('206877446').then((result) => {
+                const windowIsClosed = result.object_present;
                 //$roomArea.querySelector('.mn_js-window').innerText = 'Fönstret är ' + (windowIsClosed ? 'stängt' : 'öppet');
                 addIconAndText($roomArea.querySelector('.mn_js-window'), 'mn_room__clean-my-room', 'Fönstret är ' + (windowIsClosed ? 'stängt' : 'öppet'));
                 if (lastOpened) {
@@ -159,6 +159,12 @@ class Room {
 
   init() {
     if (this.$room) {
+        isThingInfoRequest('206877446').then(result => addIconAndText(this.$room.querySelector('.mn_js-window'), 'mn_room__clean-my-room', 'Fönstret är ' + (result.object_present ? 'stängt' : 'öppet'))); 
+        isThingInfoRequest('206871429').then(result => addIconAndText(this.$room.querySelector('.mn_js-door'), 'mn_room__door-closed', 'Dörren är ' + (result.object_present ? 'stängt' : 'öppet'))); 
+        isThingInfoRequest('206857986').then((result) => {
+            let $roomTemp = this.$room.querySelector('.mn_js-room-temp');
+            $roomTemp.innerText = '(' + result.temperature + '°C)';
+        }); 
         watchRoomTemp(this.$room);
         watchCleanMyRoom(this.$room);
         watchDoorBroken(this.$room);
