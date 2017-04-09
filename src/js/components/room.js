@@ -50,14 +50,6 @@ function timeDifference(previous) {
 }
 
 function addIconAndText($iconTextArea, className, text) {
-    /*if($iconTextArea.firstElementChild) {
-        $iconTextArea.innerHTML = '';
-    } else {
-        let iconText = document.createElement('div');
-        iconText.classList.add(className);
-        iconText.innerText = text;
-        $iconTextArea.appendChild(iconText);
-    }*/
     if (className && text) {
         $iconTextArea.innerHTML = `<div class="${className}">${text}</div>`;
     } else {
@@ -74,23 +66,18 @@ function watchCleaning($roomArea) {
         if (isCleaningInterval() && !doorIsClosed) {
             console.log('-----------> The door is open in a cleaning interval, saving the start time ' + now.getTime());
             localStorage.setItem('opened', new Date().getTime());
-            //$roomArea.querySelector('.mn_js-door').innerText = 'Dörren är öppen';
             addIconAndText($roomArea.querySelector('.mn_js-door'), 'mn_room__door-open', 'Dörren är öppen');
         } else if (doorIsClosed) {
-            //$roomArea.querySelector('.mn_js-door').innerText = 'Dörren är stängd';
             addIconAndText($roomArea.querySelector('.mn_js-door'), 'mn_room__door-closed', 'Dörren är stängd');
             const lastOpened = localStorage.getItem('opened');
             isThingClosedRequest('206877446').then((result) => {
                 const windowIsClosed = result;
-                //$roomArea.querySelector('.mn_js-window').innerText = 'Fönstret är ' + (windowIsClosed ? 'stängt' : 'öppet');
-                addIconAndText($roomArea.querySelector('.mn_js-window'), 'mn_room__clean-my-room', 'Fönstret är ' + (windowIsClosed ? 'stängt' : 'öppet'));
+                windowIsClosed ? addIconAndText($roomArea.querySelector('.mn_js-window'), 'mn_room__window-closed', 'Fönstret är stängt') : addIconAndText($roomArea.querySelector('.mn_js-window'), 'mn_room__window-open', 'Fönstret är öppet');
                 if (lastOpened) {
                     if (timeDifference(lastOpened) > 5 && windowIsClosed) {
                         localStorage.removeItem('opened');
-                        //$roomArea.querySelector('.mn_js-cleaned').innerText = 'Rummet är städat';
                         addIconAndText($roomArea.querySelector('.mn_js-cleaned'), 'mn_room__clean-my-room', 'Rummet är städat');
                         addIconAndText($roomArea.querySelector('.mn_js-clean-my-room'), null, null);
-                        //$roomArea.querySelector('.mn_js-clean-my-room').innerHTML = '';
                     }
                 }
             }); 
@@ -114,8 +101,7 @@ function watchDoorBroken($roomArea) {
                 console.log('Sekunder: ' + sec);
                 if (sec > 10) {
                     window.clearInterval(clock);
-                    addIconAndText($roomArea.querySelector('.mn_js-door'), 'mn_room__clean-my-room', 'Dörren är trasig');
-                    //$roomArea.querySelector('.mn_js-door').innerText = 'Dörren är trasig';
+                    addIconAndText($roomArea.querySelector('.mn_js-door'), 'mn_room__door-broken', 'Dörren är trasig');
                 }
             }, 1000);
         } else {

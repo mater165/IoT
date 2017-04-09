@@ -18,6 +18,12 @@
     "jshint": "jshint . --config .jshintrc",
     "serveoutput": "node serveoutput"
   },
+  "config": {
+    "ghooks": {
+      "pre-push": "npm test",
+      "post-merge": "npm install"
+    }
+  },
   "files": [
     "src"
   ],

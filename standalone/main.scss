@@ -15,7 +15,6 @@
 
     &__clean-my-room {
         text-align: center;
-        vertical-align: top;
         font-size: 1.8em;
 
         &:before {
@@ -24,12 +23,12 @@
             background: url('cleaning-icon.svg') no-repeat;
             height: 28px;
             padding-left: 30px;
+            vertical-align: bottom;
         }
     }
 
     &__door-open {
         text-align: center;
-        vertical-align: top;
         font-size: 1.8em;
 
         &:before {
@@ -38,12 +37,12 @@
             background: url('door-icon-open.svg') no-repeat;
             height: 28px;
             padding-left: 30px;
+            vertical-align: bottom;
         }
     }
 
     &__door-closed {
         text-align: center;
-        vertical-align: top;
         font-size: 1.8em;
 
         &:before {
@@ -52,6 +51,49 @@
             background: url('door-icon-closed.svg') no-repeat;
             height: 28px;
             padding-left: 30px;
+            vertical-align: bottom;
+        }
+    }
+
+    &__door-broken {
+        text-align: center;
+        font-size: 1.8em;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('lock-icon-broken.svg') no-repeat;
+            height: 28px;
+            padding-left: 30px;
+            vertical-align: bottom;
+        }
+    }
+
+    &__window-open {
+        text-align: center;
+        font-size: 1.8em;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('window-icon-open.svg') no-repeat;
+            height: 28px;
+            padding-left: 30px;
+            vertical-align: bottom;
+        }
+    }
+
+    &__window-closed {
+        text-align: center;
+        font-size: 1.8em;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('window-icon-closed.svg') no-repeat;
+            height: 28px;
+            padding-left: 30px;
+            vertical-align: bottom;
         }
     }
 }
