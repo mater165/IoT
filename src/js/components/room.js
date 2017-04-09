@@ -149,8 +149,22 @@ class Room {
 
   init() {
     if (this.$room) {
-        isThingInfoRequest('206877446').then(result => addIconAndText(this.$room.querySelector('.mn_js-window'), 'mn_room__clean-my-room', 'Fönstret är ' + (result.object_present ? 'stängt' : 'öppet'))); 
-        isThingInfoRequest('206871429').then(result => addIconAndText(this.$room.querySelector('.mn_js-door'), 'mn_room__door-closed', 'Dörren är ' + (result.object_present ? 'stängt' : 'öppet'))); 
+        isThingInfoRequest('206877446').then((result) => {
+            const windowIsClosed = result.object_present;
+            if (windowIsClosed) {
+                addIconAndText(this.$room.querySelector('.mn_js-window'), 'mn_room__window-closed', 'Fönstret är stängt');
+            } else {
+                addIconAndText(this.$room.querySelector('.mn_js-window'), 'mn_room__window-open', 'Fönstret är öppet');
+            }
+        }); 
+        isThingInfoRequest('206871429').then((result) => {
+            const doorIsClosed = result.object_present;
+            if (doorIsClosed) {
+                addIconAndText(this.$room.querySelector('.mn_js-door'), 'mn_room__door-closed', 'Dörren är stängd');
+            } else {
+                addIconAndText(this.$room.querySelector('.mn_js-door'), 'mn_room__door-open', 'Dörren är öppen');
+            }
+        }); 
         isThingInfoRequest('206857986').then((result) => {
             let $roomTemp = this.$room.querySelector('.mn_js-room-temp');
             $roomTemp.innerText = '(' + result.temperature + '°C)';
