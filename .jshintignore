@@ -1,9 +1,0 @@
-node_modules
-output
-target
-standalone/dev-server.js
-standalone/dev-client.js
-karma.conf.js
-serveoutput.js
-webpack.config.js
-standalone/main.js
